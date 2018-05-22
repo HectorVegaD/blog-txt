@@ -233,7 +233,7 @@ var BlogService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".input {\r\n    color: #696969; \r\n    font-size: 16px;\r\n}"
 
 /***/ }),
 
@@ -244,7 +244,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"blogs\">\n            <form #frm = \"ngForm\" (ngSubmit)=\"addBlog(frm)\">\n                    <div class=\"form-group\">\n                        <label for=\"\">\n                            Blog title:\n                        </label>\n                        <input \n                        type=\"text\"\n                        class=\"form-control\"\n                        name=\"blogTitle\"\n                        value=\"\"\n                        ngModel\n                        style=\"color: #696969; font-size: 16px;\">\n                    </div>\n                    <div class=\"form-group\">\n                        <label for=\"\">\n                            Blog author name:\n                        </label>\n                        <input \n                        type=\"text\"\n                        class=\"form-control\"\n                        name=\"authorName\"\n                        value=\"\"\n                        ngModel\n                        style=\"color: #696969; font-size: 16px;\">\n                    </div>\n                    <div class=\"form-group\">\n                        <label for=\"\">\n                            Blog content:\n                        </label>\n                        <textarea\n                        rows=\"10\" \n                        class=\"form-control\"\n                        name=\"blogContent\"\n                        value=\"\"\n                        ngModel\n                        style=\"color: #696969; font-size: 16px;\">\n                        </textarea>\n                    </div>\n                    <button type=\"submit\" name=\"button\" class=\"btn btn-success\" style=\"font-size:20px; background-color: #3d9ef1\">Submit</button>\n                </form>\n    </div>"
+module.exports = "<div class=\"blogs\">\n    <form #frm = \"ngForm\" (ngSubmit)=\"addBlog(frm)\">\n        <div class=\"form-group\">\n            <label for=\"blogTitle\">\n                Blog title:\n            </label>\n            <input \n                required\n                type=\"text\"\n                id=\"blogTitle\"\n                class=\"form-control\"\n                name=\"blogTitle\"\n                ngModel\n                (change)=\"update()\"\n                #blogTitle=\"ngModel\"\n                style=\"color: #696969; font-size: 16px;\">\n                <div class=\"alert alert-danger\" *ngIf=\"blogTitle.touched && !blogTitle.valid\">Blog title is required.</div>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"blogAuthor\">\n                    Blog author name:\n                </label>\n                <input \n                    required\n                    type=\"text\"\n                    id=\"blogAuthor\"\n                    class=\"form-control\"\n                    name=\"authorName\"\n                    value=\"\"\n                    ngModel\n                    (change)=\"update()\"\n                    #authorName=\"ngModel\"\n                    style=\"color: #696969; font-size: 16px;\">\n                    <div class=\"alert alert-danger\" *ngIf=\"authorName.touched && !authorName.valid\">Author name is required.</div>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"blogContent\">\n                    Blog content:\n                </label>\n                <textarea\n                    required\n                    rows=\"10\" \n                    id=\"blogContent\"\n                    class=\"form-control\"\n                    name=\"blogContent\"\n                    value=\"\"\n                    ngModel\n                    (change)=\"update()\"\n                    #blogContent=\"ngModel\"\n                    style=\"color: #696969; font-size: 16px;\">\n                </textarea>\n                <div class=\"alert alert-danger\" *ngIf=\"blogContent.touched && !blogContent.valid\">Blog content is required.</div>\n            </div>\n            <button type=\"submit\" name=\"button\" class=\"btn btn-primary\"\n            style=\"font-size:20px; background-color: #3d9ef1; margin-right: 10px;\">\n                Submit\n            </button>\n            \n            <button type=\"reset\" name=\"button\" class=\"btn btn-primary\"\n            style=\"font-size:20px; background-color: #3d9ef1\">\n                Reset\n            </button>\n\n            <p>{{submitted}}</p>\n        </form>\n        <br><br>\n</div>\n\n"
 
 /***/ }),
 
@@ -276,14 +276,20 @@ var CreateBlogComponent = /** @class */ (function () {
         this.blogService = blogService;
         this.blogs = [];
     }
+    CreateBlogComponent.prototype.update = function () {
+        this.submitted = "";
+    };
     CreateBlogComponent.prototype.addBlog = function (form) {
+        var _this = this;
         var newBlog = {
             title: form.value.blogTitle,
             author: form.value.authorName,
             content: form.value.blogContent
         };
+        form.value.blogTitle = '';
         this.blogService.addBlog(newBlog).subscribe(function (blog) {
             console.log(blog);
+            _this.submitted = "Blog Submitted";
         });
     };
     CreateBlogComponent.prototype.ngOnInit = function () {
