@@ -73,7 +73,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n    <a _ngcontent-c0=\"\" class=\"navbar-brand\" routerLink=\"/blogs\">\n        <span _ngcontent-c0=\"\" class=\"blue\">TXT- </span> \n        <span _ngcontent-c0=\"\" class=\"blue-hover transition\">blogs</span>\n    </a>\n\n    <ul>\n      <li><a routerLink=\"/blogs\">View All Blogs</a></li>\n      <li><a routerLink=\"/create-blogs\" >Create New Blog</a></li>\n    </ul>\n</nav>\n<router-outlet></router-outlet>"
+module.exports = "<nav>\n    <a _ngcontent-c0=\"\" class=\"navbar-brand\" routerLink=\"/blogs\">\n        <span _ngcontent-c0=\"\" class=\"blue\">TXT- </span> \n        <span _ngcontent-c0=\"\" class=\"blue-hover transition\">blogs</span>\n    </a>\n\n    <ul>\n      <li><a routerLink=\"/blogs\">View All Blogs</a></li>\n      <li><a routerLink=\"/create-blogs\" >Create New Blog</a></li>\n    </ul>\n</nav>\n\n<div class=\"mobile\">\n    <div class=\"dropdown show\">\n        <a class=\"btn btn-info dropdown-toggle\" href=\"#\" role=\"button\" id=\"dropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          <span style=\"font-size: 16px\">Menu</span>\n        </a>\n      \n        <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"dropdownMenuLink\">\n          <a class=\"dropdown-item\" routerLink=\"/blogs\"><span style=\"font-size: 16px\">View all blogs</span></a>\n          <a class=\"dropdown-item\" routerLink=\"/create-blogs\"><span style=\"font-size: 16px\">Create new blog</span></a>\n        </div>\n    </div>\n</div>\n\n<router-outlet></router-outlet>"
 
 /***/ }),
 
