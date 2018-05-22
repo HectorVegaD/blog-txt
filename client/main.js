@@ -328,7 +328,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div *ngFor = \"let blog of blogs\" class=\"blogs\">\n    <h1>{{blog.title}}</h1>\n    <hr>\n    <h3><span class=\"glyphicon glyphicon-user\" style=\"color: #3d9ef1\"></span> {{blog.author}}</h3>\n    <p>{{blog.content}}</p>\n  </div>\n</div>"
+module.exports = "<div *ngFor = \"let blog of blogs\" class=\"blogs\">\n  <h1>{{blog.title}}</h1>\n  <hr>\n  <h3><span class=\"glyphicon glyphicon-user\" style=\"color: #3d9ef1\"></span> {{blog.author}}</h3>\n  <p>{{blog.content}}</p>\n</div>\n"
 
 /***/ }),
 
